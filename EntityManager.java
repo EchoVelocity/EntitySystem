@@ -29,8 +29,12 @@ public class EntityManager {
 	
 	public void addComponent(Entity entity, ArrayList<Component> componentList) {
 		ArrayList<Component> tempList = entityList.get(entity.getEID());
-		for(Component component: componentList) {
-			tempList.add(component);
+		for(Component givenComponent: componentList) {
+			for(Component existingComponent: tempList) {
+				if (givenComponent.getClass() != existingComponent.getClass()) {
+					tempList.add(givenComponent);
+				}
+			}
 		}
 	}
 	
